@@ -1,0 +1,1 @@
+alert('Conference App démarré!')
