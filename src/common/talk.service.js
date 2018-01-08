@@ -1,32 +1,40 @@
-
 export default class TalkService {
+  findAllSpeakers() {
+    return new Promise((resolve, reject) => {
+      const req = new XMLHttpRequest();
 
-    findAllSpeakers() {
-        return new Promise((resolve, reject) => {
+      req.open("GET", "http://localhost:3000/speakers", true);
 
-            const req = new XMLHttpRequest();
+      req.onreadystatechange = aEvt => {
+        if (req.readyState == 4) {
+          if (req.status == 200) {
+            resolve(JSON.parse(req.responseText));
+          } else {
+            reject(`Erreur pendant le chargement de la page`);
+          }
+        }
+      };
 
-            req.open('GET', 'http://localhost:3000/speakers', true);
+      req.send(null);
+    });
+  }
+  findAllSessions() {
+    return new Promise((resolve, reject) => {
+      const req = new XMLHttpRequest();
 
-            req.onreadystatechange = (aEvt) => {
-                if (req.readyState == 4) {
-                    if (req.status == 200) {
-                        resolve(JSON.parse(req.responseText));
+      req.open("GET", "http://localhost:3000/sessions", true);
 
-                    } else {
+      req.onreadystatechange = aEvt => {
+        if (req.readyState == 4) {
+          if (req.status == 200) {
+            resolve(JSON.parse(req.responseText));
+          } else {
+            reject(`Erreur pendant le chargement de la page`);
+          }
+        }
+      };
 
-                        reject(`Erreur pendant le chargement de la page`)
-
-                    }
-
-                };
-
-            }
-
-            req.send(null);
-
-        })
-
-    }
+      req.send(null);
+    });
+  }
 }
-
