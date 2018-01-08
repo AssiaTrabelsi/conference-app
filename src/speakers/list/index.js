@@ -7,7 +7,9 @@ export default class SpeakersList {
     this.talkService.findAllSpeakers().then(speakers => {
       let template = "";
       speakers.forEach(speaker => {
-        template += `<p> ${speaker.firstname} ${speaker.lastname} </p>`;
+        template += `<a href="#speakers?id=${speaker.id}"> ${
+          speaker.firstname
+        } ${speaker.lastname} </a><br>`;
       });
 
       document.getElementById(idView).innerHTML = template;

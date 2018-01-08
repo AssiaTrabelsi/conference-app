@@ -1,4 +1,4 @@
-export default class SesionList {
+export default class SessionList {
   constructor(talkService) {
     this.talkService = talkService;
   }
@@ -7,7 +7,9 @@ export default class SesionList {
     this.talkService.findAllSessions().then(session => {
       let template = "";
       session.forEach(session => {
-        template += `<p> ${session.title}</p>`;
+        template += `<a href="#sessions?id=${session.id}"> ${
+          session.title
+        }</a><br>`;
       });
 
       document.getElementById(idView).innerHTML = template;
