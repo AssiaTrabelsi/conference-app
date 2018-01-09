@@ -10,7 +10,7 @@ const talkService = new TalkService();
 const layout = new Layout();
 const speakerList = new SpeakerList(talkService);
 const sessionList = new SessionList(talkService);
-const sessionView = new SesionView(talkService);
+const sessionView = new SessionView(talkService);
 
 layout.render();
 
